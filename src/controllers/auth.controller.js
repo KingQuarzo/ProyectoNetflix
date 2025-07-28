@@ -35,8 +35,8 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
     const { email, password } = req.body;
-    try {
 
+    try {
         const userFund = await User.findOne({ email });
 
         if (!userFund) {
@@ -80,3 +80,26 @@ export const login = async (req, res) => {
     }
 };
 
+export const logout =  (req, res) => {
+    res.cookie('token', "",{
+        expires: new Date(0), // Expire the cookie immediately
+    })
+    return res.status(200).json({
+        message: 'User logged out successfully'
+    });
+}
+
+export const profile = async (req, res) => {
+    const userFund = await User.findById(req.user.id)
+    if (!userFund) {
+        return res.status(404).json({
+            message: 'User not found'
+        });
+    }
+    return res.json({
+        id: userFund._id,
+        email: userFund.email,
+        username: userFund.username,
+        subUsuarios: userFund.subUsuarios
+    });
+};
