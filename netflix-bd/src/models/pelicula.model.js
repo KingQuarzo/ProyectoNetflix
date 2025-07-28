@@ -36,6 +36,10 @@ const peliculaSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    url:{
+        type: String,
+        require: true   
+    }
     });
 
 export default mongoose.model('pelicula', peliculaSchema)
