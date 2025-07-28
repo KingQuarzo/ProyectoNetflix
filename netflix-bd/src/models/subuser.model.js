@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
 const subUserSchema = new mongoose.Schema({
-    id:{
-        type: mongoose.Schema.Types.ObjectId,
-        auto: true 
-    },
     fatherId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -12,7 +8,7 @@ const subUserSchema = new mongoose.Schema({
     },
     username:{
         type:String,
-        require:true
+        require:true,
     },
     fecha_creacion:{
         type:Date,
@@ -24,7 +20,7 @@ const subUserSchema = new mongoose.Schema({
     },
     ubicacion:{
         type:String,
-        require:true
+        require:true,
     },
     });
 
