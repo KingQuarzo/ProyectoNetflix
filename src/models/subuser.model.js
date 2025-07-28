@@ -12,8 +12,7 @@ const subUserSchema = new mongoose.Schema({
     },
     username:{
         type:String,
-        require:true,
-        trim: true
+        require:true
     },
     fecha_creacion:{
         type:Date,
@@ -22,7 +21,11 @@ const subUserSchema = new mongoose.Schema({
     estado:{
         type:Boolean,
         default: false
-    }
+    },
+    ubicacion:{
+        type:String,
+        require:true
+    },
     });
 
 export default mongoose.model('subUser', subUserSchema)
