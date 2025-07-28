@@ -57,9 +57,6 @@ export const getSubUser = async (req, res) => {
 
 export const deleteSubUser = async (req, res) => {
     try {
-        const subUser = await SubUser.findByIdAndDelete(req.params.id);
-        if (!subUser) return res.status(404).json({ message: 'Subuser not found' });
-
         // Eliminar el subuser del array subUsuarios del padre
         const fatherUser = await User.findById(subUser.fatherId);
         if (fatherUser) {
@@ -68,6 +65,9 @@ export const deleteSubUser = async (req, res) => {
             );
             await fatherUser.save();
         }
+
+        const subUser = await SubUser.findByIdAndDelete(req.params.id);
+        if (!subUser) return res.status(404).json({ message: 'Subuser not found' });
 
         res.status(200).json(subUser);
     } catch (error) {
