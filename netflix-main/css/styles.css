@@ -1,0 +1,21 @@
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+  border-bottom: 1px solid #333;
+}
+
+.card img {
+  object-fit: cover;
+  height: 180px;
+}
+
+.card {
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
